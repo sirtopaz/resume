@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resume</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/resume.css">
+  </head>
+  <body>
+    <script>
+      window.ResumeENV = {{ENV}};
+      window.EmberENV = window.ResumeENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/resume.js"></script>
+    <script>
+      window.Resume = require('resume/app')['default'].create(ResumeENV.APP);
+    </script>
+  </body>
+</html>
