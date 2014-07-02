@@ -16,6 +16,10 @@ var JobsController = Ember.ArrayController.extend({
 		}
 	},
 
+
+	sortProperties: ['startDate'],
+	sortAscending: false,
+
 	showMenu: false
 
 });

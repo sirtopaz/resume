@@ -1,7 +1,11 @@
-<h3>Testing</h3>
+<h2>Experience</h2>
 
-
-{{#each job in content}}
-<h4> {{job.title}}</h4>
-<p> {{job.company}} </p>
+{{#each job in arrangedContent}}
+<section class="job">
+<header>
+<h3 class="jobTitle"> {{job.title}}</h3>
+<h4 class="company"> {{job.company}} </h4>
+</header>
+<hr>
+</section>
 {{/each}}
