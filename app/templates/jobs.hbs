@@ -1,13 +1,18 @@
 <h2>Experience</h2>
 
+
+<ul class="medium-block-grid-2 large-block-grid-3">
 {{#each job in arrangedContent}}
-<section class="job">
-	<header>
-		<h3 class="jobTitle"> {{job.title}}</h3>
-		<h4 class="company"> {{job.company}} </h4>
-	</header>
-	<hr>
-</section>
+	<li>
+		<section class="job">
+			<header>
+				<h3 class="jobTitle"> {{job.title}}</h3>
+				<h4 class="company"> {{job.company}} </h4>
+			</header>
+			<hr>
+		</section>
+	</li>
 {{/each}}
+</ul>
 
 <aside><nav>Go to {{#link-to 'index'}}Home{{/link-to}}</nav></aside>
