@@ -4,26 +4,18 @@ $header-font-color: navy;
 
 @import "vendor/foundation/scss/normalize.scss";
 @import "vendor/foundation/scss/foundation.scss";
+@import "vendor/bourbon/dist/bourbon";
 
 
 
 
 html {
 
+	@include radial-gradient(ellipse at center,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%, $fallback: rgba(99,147,193,1));
+
 	margin:0;
 	padding:0;
 
-	/* find good mixins */ 
-
-	background: rgb(207,231,250); /* Old browsers */
-	background: -moz-radial-gradient(center, ellipse cover,  rgba(207,231,250,1) 0%, rgba(99,147,193,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(207,231,250,1)), color-stop(100%,rgba(99,147,193,1))); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* IE10+ */
-	background: radial-gradient(ellipse at center,  rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	
 }
 
 
