@@ -2,12 +2,13 @@
 
 
 <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-{{#each job in arrangedContent}}
+{{#each arrangedContent itemController='job'}}
 	<li>
 		<section class="job">
 			<header>
-				<h3 class="jobTitle"> {{job.title}}</h3>
-				<h4 class="company"> {{job.company}} </h4>
+				<h3 class="jobTitle">{{title}}</h3>
+				<h4 class="company">{{company}}</h4>
+				<div class="dates">{{startDateLabel}} - {{endDateLabel}}</div>
 			</header>
 			<hr>
 		</section>

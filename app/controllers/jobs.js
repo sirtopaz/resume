@@ -1,5 +1,7 @@
 import Ember from "ember";
 
+var set = Ember.set;
+
 
 var JobsController = Ember.ArrayController.extend({
 	init :function () {
@@ -11,7 +13,7 @@ var JobsController = Ember.ArrayController.extend({
 			this.toggleProperty("showMenu");
 		}, 
 		returnToIndex : function() {
-			this.set("showMenu", false);
+			set(this, "showMenu", false);
 			this.transitionToRoute("index");
 		}
 	},
@@ -19,7 +21,6 @@ var JobsController = Ember.ArrayController.extend({
 
 	sortProperties: ['startDate'],
 	sortAscending: false,
-
 	showMenu: false
 
 });
