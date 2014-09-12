@@ -5,9 +5,9 @@ $header-font-color: navy;
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
-@import "vendor/foundation/scss/normalize.scss";
-@import "vendor/foundation/scss/foundation.scss";
-@import "vendor/bourbon/dist/bourbon";
+@import "bower_components/foundation/scss/normalize.scss";
+@import "bower_components/foundation/scss/foundation.scss";
+@import "bower_components/bourbon/dist/bourbon";
 
 
 

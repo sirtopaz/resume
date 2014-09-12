@@ -4,9 +4,9 @@ var set = Ember.set;
 
 
 var JobsController = Ember.ArrayController.extend({
-	init :function () {
-		//debugger;
-	},
+	// init :function () {
+	// 	//debugger;
+	// },
 
 	actions: {
 		toggleMenu : function() {
