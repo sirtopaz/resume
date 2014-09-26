@@ -1,12 +1,16 @@
-$body-bg: none;
-$body-font-color: navy;
-$header-font-family: 'Oswald', Helvetica, Arial, sans-serif;
-$header-font-color: navy;
-
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
 @import "bower_components/modularized-normalize-scss/normalize";
 @import "bower_components/bourbon/dist/bourbon";
+
+
+$body-bg: none;
+$body-font-color: navy;
+$body-font-family: $helvetica;
+$header-font-family: 'Oswald', $helvetica;
+$header-font-color: navy;
+
+
 
 
 
@@ -24,7 +28,16 @@ html {
 
 
 body {
+	
+	color: $body-font-color;
+	font-family: $body-font-family;
+
 	padding: 20px;
+
+	h1, h2, h3, h4, h5 {
+		font-family: $header-font-family;
+		color: $header-font-color;
+	}
 
 	h2 {
 		text-decoration: underline;
@@ -36,6 +49,7 @@ body {
 }
 
 .inlineLabel {
-	font-size: 1.2em;
-	font-weight: bold;
+	font-size: 1em;
+	font-family: $header-font-family;
+	font-weight: 700;
 }
