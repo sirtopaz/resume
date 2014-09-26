@@ -1,19 +1,19 @@
-<h2>Experience</h2>
+<section class="experience">
+<header>
+	<h2>Experience</h2>
+</header>
 
-<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
 {{#each arrangedContent itemController='job'}}
-	<li>
-		<section class="job">
-			<header>
-				<h3 class="jobTitle">{{title}}</h3>
-				<h4 class="company">{{company}}</h4>
-				<div class="dates">{{startDateLabel}} - {{endDateLabel}}</div>
-			</header>
-			<p><span class="inlineLabel">Technologies:</span> {{technologies}}</p>
-			<hr>
-		</section>
-	</li>
+	<section class="job">
+		<header>
+			<h3 class="jobTitle">{{title}}</h3>
+			<h4 class="company">{{company}}</h4>
+			<div class="dates">{{startDateLabel}} - {{endDateLabel}}</div>
+		</header>
+		<p><span class="inlineLabel">Technologies:</span> {{technologies}}</p>
+		<hr>
+	</section>
 {{/each}}
-</ul>
+</section>
 
 <aside><nav>Go to {{#link-to 'index'}}Home{{/link-to}}</nav></aside>
