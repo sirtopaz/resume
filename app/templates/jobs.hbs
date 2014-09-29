@@ -3,17 +3,16 @@
 	<h2>Experience</h2>
 </header>
 
-{{#each arrangedContent itemController='job'}}
-	<section class="job">
-		<header>
-			<h3 class="jobTitle">{{title}}</h3>
-			<h4 class="company">{{company}}</h4>
-			<div class="dates">{{startDateLabel}} - {{endDateLabel}}</div>
-		</header>
-		<p><span class="inlineLabel">Technologies:</span> {{technologies}}</p>
-		<hr>
-	</section>
+<nav>
+<ul>
+{{#each arrangedContent}}
+<li>{{#link-to 'jobs.job' id}}{{company}}{{/link-to}}</li>
 {{/each}}
+</ul>
+</nav>
+{{outlet}}
 </section>
+<hr>
+
 
 <aside><nav>Go to {{#link-to 'index'}}Home{{/link-to}}</nav></aside>

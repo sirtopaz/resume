@@ -25,9 +25,11 @@ var parseDate = function(dateString) {
 
 var JobController = Ember.Controller.extend({
 	init :function () {
+		this._super();
 		//debugger;
 	},
 
+	id : alias("model.id"),
 	startDate : alias("model.startDate"),
 	endDate: alias("model.endDate"),
 	title: alias("model.title"),
