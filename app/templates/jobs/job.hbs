@@ -2,7 +2,14 @@
 	<header>
 		<h3 class="jobTitle">{{title}}</h3>
 		<h4 class="company">{{company}}</h4>
+		<div class="location">{{location}}</div>
 		<div class="dates">{{startDateLabel}} - {{endDateLabel}}</div>
+
 	</header>
+
+	{{#each accomplishments }}
+	<p class="accomplishment">{{this.description}}</p>
+	{{/each}}
+
 	<p><span class="inlineLabel">Technologies:</span> {{technologies}}</p>
 </section>

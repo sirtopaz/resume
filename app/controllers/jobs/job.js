@@ -30,6 +30,8 @@ var JobController = Ember.Controller.extend({
 	title: alias("model.title"),
 	company: alias("model.company"),
 	technologies: alias("model.technologies"),
+	location: alias("model.location"),
+	accomplishments: alias("model.accomplishments"),
 
 
 
