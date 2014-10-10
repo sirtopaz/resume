@@ -19,6 +19,10 @@ var parseDate = function(dateString) {
 
 var colors = d3.scale.category10();
 
+var boxWidth = function(x, d) { 
+  return x(parseDate(d.get("endDate"))) - x(parseDate(d.get("startDate"))); 
+};
+
 
 var MountainGraph = Ember.Component.extend({
   tagName: 'svg',
@@ -47,6 +51,7 @@ var MountainGraph = Ember.Component.extend({
     var width = this.get('w');
     //var height = this.get('h');
     var data = this.get('data').toArray();
+
     var svg = d3.select('#'+this.get('elementId'));
 
     var startDate = parseDate(data[0].get("startDate"));
@@ -77,17 +82,16 @@ var MountainGraph = Ember.Component.extend({
         .attr("height", 100)
         .attr("fill", "blue");*/
 
-
-
+    var comp = this;
 
     svg.select(".jobs").selectAll(".job")
       .data(data)
         .enter().append("rect")
         .attr("class", "job")
         .attr("x", function(d) { return x(parseDate(d.get("startDate"))); })
-        .attr("y", 0)
-        .attr("width",  function(d) { return x(parseDate(d.get("endDate"))) - x(parseDate(d.get("startDate"))); })
-        .attr("height", 100)
+        .attr("y", function(d) { return comp.get("h") -  boxWidth(x,d); })
+        .attr("width",  function(d) { return boxWidth(x,d);})
+        .attr("height", function(d) { return boxWidth(x,d);})
         .attr("fill", colors);
 
     /*
