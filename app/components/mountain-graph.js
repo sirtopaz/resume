@@ -19,15 +19,11 @@ var parseDate = function(dateString) {
 
 var colors = d3.scale.category10();
 
-var boxWidth = function(x, d) { 
-  return x(parseDate(d.get("endDate"))) - x(parseDate(d.get("startDate"))); 
-};
-
 
 var MountainGraph = Ember.Component.extend({
   tagName: 'svg',
   attributeBindings: 'width height'.w(),
-  margin: {top: 20, right: 20, bottom: 20, left: 20},
+  margin: {top: 20, right: 60, bottom: 0, left: 20},
 
   w: function(){
     return this.get('width') - this.get('margin.left') - this.get('margin.right');
@@ -47,6 +43,8 @@ var MountainGraph = Ember.Component.extend({
 
   draw: function(){
 
+    var comp = this;
+
     //var formatPercent = d3.format(".0%");
     var width = this.get('w');
     //var height = this.get('h');
@@ -59,6 +57,31 @@ var MountainGraph = Ember.Component.extend({
     var x = d3.time.scale()
       .domain([startDate, new Date()])
       .rangeRound([0, width]);
+
+
+
+    var pts = function(d) {
+
+      var x1 = x(parseDate(d.get("startDate")));
+      var x2 = x(parseDate(d.get("endDate")));
+      var x3 = 2*x2 - x1;
+
+      var y2 = comp.get("h");
+      var y1 = y2 - (x2-x1);
+
+      return "" + x1+","+y2+" "+x2+","+y1+" "+x3+","+y2;
+
+    };
+
+    svg.select(".jobs").selectAll(".job")
+      .data(data)
+        .enter().append("polygon")
+        .attr("class", "job")
+        .attr("points", function(d) { return pts(d); })
+        .attr("fill", colors)
+        .attr("opacity", ".75");
+
+
 
     /*
 
@@ -74,7 +97,8 @@ var MountainGraph = Ember.Component.extend({
     svg.select(".axis.y").call(yAxis);
     */
 
-/*    svg.append("rect")
+    /*
+    svg.append("rect")
         .attr("class", "mountain")
         .attr("x", 0)
         .attr("width", 100)
@@ -82,19 +106,23 @@ var MountainGraph = Ember.Component.extend({
         .attr("height", 100)
         .attr("fill", "blue");*/
 
-    var comp = this;
 
+    /*
+
+
+    var boxWidth = function(d) { 
+      return x(parseDate(d.get("endDate"))) - x(parseDate(d.get("startDate"))); 
+    };
     svg.select(".jobs").selectAll(".job")
       .data(data)
         .enter().append("rect")
         .attr("class", "job")
         .attr("x", function(d) { return x(parseDate(d.get("startDate"))); })
-        .attr("y", function(d) { return comp.get("h") -  boxWidth(x,d); })
-        .attr("width",  function(d) { return boxWidth(x,d);})
-        .attr("height", function(d) { return boxWidth(x,d);})
+        .attr("y", function(d) { return comp.get("h") -  boxWidth(d); })
+        .attr("width",  function(d) { return boxWidth(d);})
+        .attr("height", function(d) { return boxWidth(d);})
         .attr("fill", colors);
 
-    /*
     svg.select(".rects").selectAll("rect")
       .data(data)
         .enter().append("rect")
