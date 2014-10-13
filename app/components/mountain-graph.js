@@ -1,5 +1,37 @@
 import Ember from "ember";
-//import d3 from "d3";
+
+var get      = Ember.get;
+
+
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+var formatDate = function(dateString) {
+  var dt = parseDate(dateString);
+
+  return months[dt.getMonth()] + " " + dt.getFullYear();
+};
+
+var startDateLabel = function(dateString) {
+
+  if(!dateString) {
+    return "";
+  }
+
+  return formatDate(dateString);
+};
+
+var endDateLabel = function(dateString) {
+
+  if(!dateString) {
+    return "Present";
+  }
+
+  return formatDate(dateString);
+};
+
+var companyLabel = function(d) {
+  return d.get("company") + " (" + startDateLabel(d.get("startDate")) + "-" + endDateLabel(d.get("endDate")) + ")";
+};
 
 
 var parseDate = function(dateString) {
@@ -22,35 +54,43 @@ var colors = d3.scale.category10();
 
 var MountainGraph = Ember.Component.extend({
   tagName: 'svg',
-  attributeBindings: 'width height'.w(),
+  attributeBindings: ['viewBox'],
   margin: {top: 20, right: 60, bottom: 0, left: 20},
 
+  width: "100%",
+  vbWidth:"800",
+  vbHeight: "400",
+
+  viewBox: function() {
+    return "0 0 " + get(this,'vbWidth') + " " + get(this,'vbHeight');
+  }.property('vbWidth', 'vbHeight'),
+
   w: function(){
-    return this.get('width') - this.get('margin.left') - this.get('margin.right');
-  }.property('width'),
+    return get(this,'vbWidth') - get(this,'margin.left') - get(this,'margin.right');
+  }.property('vbWidth'),
 
   h: function(){
-    return this.get('height') - this.get('margin.top') - this.get('margin.bottom');
-  }.property('height'),  
+    return get(this,'vbHeight') - get(this,'margin.top') - get(this,'margin.bottom');
+  }.property('vbHeight'),  
 
   transformG: function(){
-    return "translate(" + this.get('margin.left') + "," + this.get('margin.top') + ")";
+    return "translate(" + get(this,'margin.left') + "," + get(this,'margin.top') + ")";
   }.property(),
 
   transformX: function(){
-    return "translate(0,"+ this.get('h') +")";
-  }.property('h'),   
+    return "translate(0,"+ get(this,'h') +")";
+  }.property('h'), 
 
   draw: function(){
 
     var comp = this;
 
     //var formatPercent = d3.format(".0%");
-    var width = this.get('w');
-    //var height = this.get('h');
-    var data = this.get('data').toArray();
+    var width = get(this,'w');
+    //var height = get(this,'h');
+    var data = get(this,'data').toArray();
 
-    var svg = d3.select('#'+this.get('elementId'));
+    var svg = d3.select('#'+get(this,'elementId'));
 
     var startDate = parseDate(data[0].get("startDate"));
 
@@ -79,7 +119,11 @@ var MountainGraph = Ember.Component.extend({
         .attr("class", "job")
         .attr("points", function(d) { return pts(d); })
         .attr("fill", colors)
-        .attr("opacity", ".75");
+        .attr("opacity", ".75")
+        .append("desc")
+        .text(function(d) {return companyLabel(d); })
+
+        ;
 
 
 
