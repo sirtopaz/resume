@@ -45,7 +45,7 @@ Job.reopenClass({
 			"title":"GUI Engineer",
 			"startDate":"2002-08-15",
 			"endDate":"2003-02-28",
-			"technologies":"HTML, CSS, JavaScript, Java, JSP, JSTL, XML, Photoshop, Ecplise, CVS",
+			"technologies":"HTML, CSS, JavaScript, Java, JSP, JSTL, XML, Photoshop, Eclipse, CVS",
 			"accomplishments":[5,6],
 			"brief":null,
 			"location":"Cambridge MA"
@@ -57,7 +57,7 @@ Job.reopenClass({
 			"title":"Principal Software Engineer",
 			"startDate":"2003-03-01",
 			"endDate":"2005-07-15",
-			"technologies":"HTML, CSS, JavaScript, Java, JSP, JSTL, XML, XSLT, Ecplise, Photoshop, Dreamweaver, Visio",
+			"technologies":"HTML, CSS, JavaScript, Java, JSP, JSTL, XML, XSLT, Eclipse, Photoshop, Dreamweaver, Visio",
 			"accomplishments":[7,8,9],
 			"brief":null,
 			"location":"Burlington MA"
@@ -69,7 +69,7 @@ Job.reopenClass({
 			"title":"Principal Software Engineer",
 			"startDate":"2005-07-15",
 			"endDate":"2008-07-15",
-			"technologies":"HTML, CSS, JavaScript, JSON, Java, XML, XSLT, Visio, Dreamweaver, Photoshop, Ecplise, Clearcase",
+			"technologies":"HTML, CSS, JavaScript, JSON, Java, XML, XSLT, Visio, Dreamweaver, Photoshop, Eclipse, Clearcase",
 			"accomplishments":[10,11,12,13],
 			"brief":null,
 			"location":"Cambridge MA"
@@ -81,7 +81,7 @@ Job.reopenClass({
 			"title":"Front-end Development Manager",
 			"startDate":"2008-07-15",
 			"endDate":"2009-06-30",
-			"technologies":"HTML, CSS, JavaScript, JSON, JQuery, JQuery UI, Java, JSP, JSTL, Spring (MVC), Hibernate, Fusion Charts, Flash (ActionScript), Photoshop, Ecplise, SVN",
+			"technologies":"HTML, CSS, JavaScript, JSON, JQuery, JQuery UI, Java, JSP, JSTL, Spring Framework (MVC), Hibernate, Fusion Charts, Flash (ActionScript), Photoshop, Eclipse, SVN",
 			"accomplishments":[14,15,16,17],
 			"brief":null,
 			"location":"Boston MA"
