@@ -53,6 +53,18 @@ html, body {
 	}
 }
 
+.outline {
+	.content {
+		
+	}
+	.hide {
+		display:none;
+	}
+	.show {
+		display:block;
+	}
+}
+
 .inlineLabel {
 	font-size: 1em;
 	font-family: $header-font-family;

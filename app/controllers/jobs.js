@@ -17,6 +17,42 @@ var JobsController = Ember.ArrayController.extend({
 		returnToIndex : function() {
 			set(this, "showMenu", false);
 			this.transitionToRoute("index");
+		},
+
+		showSummarySection : function() {
+			this.setProperties({
+			  showSummary: true,
+			  showExperience: false,
+			  showSkills: false,
+			  showEducation: false
+			});
+		},
+
+		showExperienceSection : function() {
+			this.setProperties({
+			  showSummary: false,
+			  showExperience: true,
+			  showSkills: false,
+			  showEducation: false
+			});
+		},
+
+		showSkillsSection : function() {
+			this.setProperties({
+			  showSummary: false,
+			  showExperience: false,
+			  showSkills: true,
+			  showEducation: false
+			});
+		},
+
+		showEducationSection : function() {
+			this.setProperties({
+			  showSummary: false,
+			  showExperience: false,
+			  showSkills: false,
+			  showEducation: true
+			});
 		}
 	},
 
@@ -24,6 +60,11 @@ var JobsController = Ember.ArrayController.extend({
 	sortProperties: ['startDate'],
 	sortAscending: false,
 	showMenu: false,
+
+	showSummary: true,
+	showExperience: false,
+	showSkills: false,
+	showEducation: false,
 
 	technologyMap: function() {
 		var arr = get(this, 'content').toArray();
