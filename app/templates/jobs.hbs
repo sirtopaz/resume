@@ -1,38 +1,42 @@
-<section class="summary">
-<header>
-	<h2>Summary</h2>
-</header>
+<section class="ouline">
 
+	<section class="summary">
+		<header>
+			<h2>Summary</h2>
+		</header>
+
+	</section>
+
+
+
+	<section class="experience">
+		<header>
+			<h2>Experience</h2>
+		</header>
+
+		<nav>
+			<ul>
+			{{#each arrangedContent}}
+				<li>{{#link-to 'jobs.job' id}}{{company}}{{/link-to}}</li>
+			{{/each}}
+			</ul>
+		</nav>
+	</section>
+
+	<section class="skills">
+		<header>
+			<h2>Skills</h2>
+		</header>
+	</section>
+
+	<section class="education">
+		<header>
+			<h2>Education</h2>
+		</header>
+	</section>
 </section>
 
-
-
-<section class="experience">
-<header>
-	<h2>Experience</h2>
-</header>
-
-<nav>
-<ul>
-{{#each arrangedContent}}
-<li>{{#link-to 'jobs.job' id}}{{company}}{{/link-to}}</li>
-{{/each}}
-</ul>
-</nav>
 {{outlet}}
-</section>
-
-<section class="skills">
-<header>
-	<h2>Skills</h2>
-</header>
-</section>
-
-<section class="education">
-<header>
-	<h2>Education</h2>
-</header>
-</section>
 
 <footer>
 	<hr>
