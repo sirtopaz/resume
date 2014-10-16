@@ -102,8 +102,8 @@ var MountainGraph = Ember.Component.extend({
 
     var pts = function(d) {
 
-      var x1 = x(parseDate(d.get("startDate")));
-      var x2 = x(parseDate(d.get("endDate")));
+      var x1 = x(parseDate(get(d, "startDate")));
+      var x2 = x(parseDate(get(d, "endDate")));
       var x3 = 2*x2 - x1;
 
       var y2 = comp.get("h");
@@ -113,69 +113,28 @@ var MountainGraph = Ember.Component.extend({
 
     };
 
+/*    
     svg.select(".jobs").selectAll(".job")
       .data(data)
         .enter().append("polygon")
         .attr("class", "job")
         .attr("points", function(d) { return pts(d); })
-        .attr("fill", colors)
-        .attr("opacity", ".75")
+        .attr("style" function(d) {return "opacity:.75; fill:" + colors(d);})
+        .append("desc")
+        .text(function(d) {return companyLabel(d); })
+
+        ;*/
+
+    svg.select(".jobs").selectAll(".job")
+      .data(data)
+        .enter().append("polyline")
+        .attr("class", "job")
+        .attr("points", function(d) { return pts(d); })
+        .attr("style", function(d) { return "stroke: #EFEFEF; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; fill-opacity:.8; fill:"+colors(d); })
         .append("desc")
         .text(function(d) {return companyLabel(d); })
 
         ;
-
-
-
-    /*
-
-    var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
-    var y = d3.scale.linear().range([height, 0]);
-    var xAxis = d3.svg.axis().scale(x).orient("bottom");
-    var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5).tickFormat(formatPercent);
-
-    x.domain(data.map(function(d) { return d.letter; }));
-    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
-    svg.select(".axis.x").call(xAxis);
-    svg.select(".axis.y").call(yAxis);
-    */
-
-    /*
-    svg.append("rect")
-        .attr("class", "mountain")
-        .attr("x", 0)
-        .attr("width", 100)
-        .attr("y", 0)
-        .attr("height", 100)
-        .attr("fill", "blue");*/
-
-
-    /*
-
-
-    var boxWidth = function(d) { 
-      return x(parseDate(d.get("endDate"))) - x(parseDate(d.get("startDate"))); 
-    };
-    svg.select(".jobs").selectAll(".job")
-      .data(data)
-        .enter().append("rect")
-        .attr("class", "job")
-        .attr("x", function(d) { return x(parseDate(d.get("startDate"))); })
-        .attr("y", function(d) { return comp.get("h") -  boxWidth(d); })
-        .attr("width",  function(d) { return boxWidth(d);})
-        .attr("height", function(d) { return boxWidth(d);})
-        .attr("fill", colors);
-
-    svg.select(".rects").selectAll("rect")
-      .data(data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return x(d.letter); })
-        .attr("width", x.rangeBand())
-        .attr("y", function(d) { return y(d.frequency); })
-        .attr("height", function(d) { return height - y(d.frequency); });
-    */
   },
 
   didInsertElement: function(){
