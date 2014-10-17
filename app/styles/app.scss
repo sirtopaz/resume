@@ -73,6 +73,21 @@ html, body {
 	}
 }
 
+.skillList {
+	.skill {
+		&:after {
+		  content: ', ';
+		}
+
+		//ember adds lots of extra tags... so cannot use last-child
+		&:last-of-type {
+			&:after {
+				content: '';
+			}
+		}
+	}
+}
+
 .inlineLabel {
 	font-size: 1em;
 	font-family: $header-font-family;

@@ -1,6 +1,18 @@
 <section class="area skills">
 	<h2 class="title hideFromView">Skills</h2>
-	<nav class="content">
-		SKILLS
-	</nav>
+	<h3>Technologies</h3>
+	<div class="skillList">
+	{{#each technologies}} <span class="skill">{{this.name}}</span>{{/each}}
+	</div>
+
+	<h3>Tools</h3>
+	<div class="skillList">
+	{{#each tools}} <span class="skill">{{this.name}}</span>{{/each}}
+	</div>
+
+	<h3>Techniques</h3>
+	<div class="skillList">
+	{{#each techniques}} <span class="skill">{{this.name}}</span>{{/each}}
+	</div>
+
 </section>
