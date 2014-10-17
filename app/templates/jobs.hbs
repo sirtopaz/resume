@@ -1,43 +1,13 @@
 <section class="resume">
 	<nav class="areaNav">
 		<span {{bind-attr class=":navItem showSummary:selected"}}class="section" {{action 'showSection' 'summary'}}>Summary</span>
-		<span {{bind-attr class=":navItem showEducation:selected"}} {{action 'showSection' 'experience'}}>Experience</span>
+		<span {{bind-attr class=":navItem showEducation:selected"}} {{action 'showSection' 'job'}}>Experience</span>
 		<span {{bind-attr class=":navItem showsSkills:selected"}} {{action 'showSection' 'skills'}}>Skills</span>
 		<span {{bind-attr class=":navItem showEducation:selected"}} {{action 'showSection' 'education'}}>Education</span>
 	</nav>
-	<section class="area summary">
-		<h2 class="title hideFromView">Summary</h2>
-		<div {{bind-attr class=":content showSummary:show:hide"}}>
-			<p>I am a designer, developer, mentor and team lead with a passion for creating software to help people in the real world. With over 18 years of experience focused on web user interfaces, I'm versed in all aspects of software development from visual design and usability to architecture and implementation. I am looking for a role that blends good design, quality development and passionate team members with creative and innovative deliverables.</p>
-		</div>
-	</section>
-	<section class="area experience">
-		<h2 class="title hideFromView">Experience</h2>
-		<nav {{bind-attr class=":content showExperience:show:hide"}}>
-			<ul>
-			{{#each arrangedContent}}
-				<li>{{#link-to 'jobs.job' id}}{{company}}{{/link-to}}</li>
-			{{/each}}
-			</ul>
-		</nav>
-	</section>
-	<section class="area skills">
-		<h2 class="title hideFromView">Skills</h2>
-		<nav {{bind-attr class=":content showSkills:show:hide"}}>
-			SKILLS
-		</nav>
-	</section>
-	<section class="area education">
-		<h2 class="title hideFromView">Education</h2>
-		<nav {{bind-attr class=":content showEducation:show:hide"}}>
-			EDUCATION
-		</nav>
-	</section>
 
 	{{outlet}}
 </section>
-
-
 
 <footer class="pagefoot">
 	<hr>

@@ -25,6 +25,11 @@ var JobController = Ember.Controller.extend({
 		//debugger;
 	},
 
+	needs: ["jobs"],
+
+	jobs: alias("controllers.jobs"),
+	jobList: alias("jobs.arrangedContent"),
+
 	startDate : alias("model.startDate"),
 	endDate: alias("model.endDate"),
 	title: alias("model.title"),

@@ -7,7 +7,10 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.resource("jobs", { path: "/jobs" }, function() {
+		this.route("summary");
 		this.route("job", {path: "/:job_id"});
+		this.route("skills");
+		this.route("education");
 	});
 	this.route("mountains", { path: "/mountains" });
 });

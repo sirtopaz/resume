@@ -1,3 +1,14 @@
+<section class="area experience">
+	<h2 class="title hideFromView">Experience</h2>
+	<nav class="content">
+		<ul>
+		{{#each jobList}}
+			<li>{{#link-to 'jobs.job' this.id}}{{this.company}}{{/link-to}}</li>
+		{{/each}}
+		</ul>
+	</nav>
+</section>
+
 <section class="job detail">
 	<header>
 		<h3 class="jobTitle">{{title}}</h3>

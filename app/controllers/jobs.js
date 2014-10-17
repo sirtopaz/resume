@@ -13,7 +13,14 @@ var JobsController = Ember.ArrayController.extend({
 	actions: {
 		showSection : function(section) {
 			set(this, "section", section);
-			this.transitionToRoute('jobs');
+
+			if("job" === section) {
+
+				this.transitionToRoute('jobs.job', get(this, "arrangedContent.firstObject.id"));
+				return;
+			}
+
+			this.transitionToRoute('jobs.' + section);
 		}
 	},
 
@@ -29,7 +36,7 @@ var JobsController = Ember.ArrayController.extend({
 	}.property("section"),
 
 	showExperience: function() {
-		return get(this, "section") === "experience";
+		return get(this, "section") === "job";
 	}.property("section"),
 	showSkills: function() {
 		return get(this, "section") === "skills";
