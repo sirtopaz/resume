@@ -13,6 +13,7 @@ var JobsController = Ember.ArrayController.extend({
 	actions: {
 		showSection : function(section) {
 			set(this, "section", section);
+			this.transitionToRoute('jobs');
 		}
 	},
 
