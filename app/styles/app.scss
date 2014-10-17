@@ -53,12 +53,22 @@ html, body {
 }
 
 .outline {
+	position:relative;
+
+	>.item {
+		//background: rgba(255,0,0,.5);
+	}
+
 	.content {
+		@include transition (transform 500ms);
+
 		&.hide {
-			display:none;
+			//display:none;
+			@include transform(translateX(-100vw));
 		}
 		&.show {
-			display:block;
+			//display:block;
+			@include transform(translateX(0));
 		}		
 	}
 }
@@ -71,4 +81,10 @@ html, body {
 
 .centered {
 	text-align:center;
+}
+
+.hideFromView {
+    position: absolute;
+    top: -500vh;
+    left: -500vh;
 }

@@ -11,48 +11,8 @@ var JobsController = Ember.ArrayController.extend({
 	},
 
 	actions: {
-		toggleMenu : function() {
-			this.toggleProperty("showMenu");
-		}, 
-		returnToIndex : function() {
-			set(this, "showMenu", false);
-			this.transitionToRoute("index");
-		},
-
-		showSummarySection : function() {
-			this.setProperties({
-			  showSummary: true,
-			  showExperience: false,
-			  showSkills: false,
-			  showEducation: false
-			});
-		},
-
-		showExperienceSection : function() {
-			this.setProperties({
-			  showSummary: false,
-			  showExperience: true,
-			  showSkills: false,
-			  showEducation: false
-			});
-		},
-
-		showSkillsSection : function() {
-			this.setProperties({
-			  showSummary: false,
-			  showExperience: false,
-			  showSkills: true,
-			  showEducation: false
-			});
-		},
-
-		showEducationSection : function() {
-			this.setProperties({
-			  showSummary: false,
-			  showExperience: false,
-			  showSkills: false,
-			  showEducation: true
-			});
+		showSection : function(section) {
+			set(this, "section", section);
 		}
 	},
 
@@ -61,21 +21,21 @@ var JobsController = Ember.ArrayController.extend({
 	sortAscending: false,
 	showMenu: false,
 
-	showSummary: true,
-	showExperience: false,
-	showSkills: false,
-	showEducation: false,
+	section : "summary",
 
-	technologyMap: function() {
-		var arr = get(this, 'content').toArray();
+	showSummary: function() {
+		return get(this, "section") === "summary";
+	}.property("section"),
 
-		var counts = arr
-				.reduce(function(terms, job) { return terms.concat(job.technologies.split(", ")); }, [])
-				.reduce(function(map,term) { map[term] = (map[term] || 0) + 1; return map; }, {});
-
-		return counts;
-
-	}.property("@each")
+	showExperience: function() {
+		return get(this, "section") === "experience";
+	}.property("section"),
+	showSkills: function() {
+		return get(this, "section") === "skills";
+	}.property("section"),
+	showEducation: function() {
+		return get(this, "section") === "education";
+	}.property("section")
 
 });
 
