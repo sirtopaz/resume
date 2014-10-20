@@ -104,19 +104,10 @@ html, body {
     left: -500vh;
 }
 
-@include keyframes(slidex) {
-  from {
-    @include transform(scale(0));
-  }
-  to {
-    @include transform(scale(1));
-  }
-}
-
 
 .clouds {
 	.cloud {
 		opacity:.9;
-		//@include animation(slidex 2.0s);
+		font-family: $header-font-family;
 	}
 }
