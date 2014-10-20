@@ -149,23 +149,29 @@ var MountainGraph = Ember.Component.extend({
       return;
     }
 
+    var width = get(this,'w');
     var rng = countRange(wordCounts);
     var sizeScale = d3.scale.linear().domain(rng).rangeRound([7, 100]);
+    var y = d3.scale.linear().domain(rng).rangeRound([10, 100]);
+    var colorRange = ["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#08519c","#08306b"].reverse();
 
-    var colorRange = ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d","#023858"].reverse();
+    //var colorRange = ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d","#023858"].reverse();
 
-    var z = d3.scale.ordinal().domain(rng).range(colorRange);
+    var fillScale = d3.scale.ordinal().domain(rng).range(colorRange);
     var svg = d3.select('#'+get(this,'elementId'));
 
-    svg.select(".clouds").selectAll(".cloud")
-      .data(wordCounts)
+    var clouds = svg.select(".clouds").selectAll(".cloud");
+
+    clouds.data(wordCounts)
       .enter().append("text")
       .attr("class", "cloud")
-      .attr("y", 50)
-      .attr("x", 0)
-      .attr("style", function(d) { return "fill:"+ z(d.count)+";font-size:" + sizeScale(d.count); })
+      .attr("y", function(d){return y(d.count) + Math.floor(Math.random() * 101);})
+      .attr("x", function(){return Math.floor(Math.random() * (width +1) );})
+      .attr("style", function(d) { return "fill:"+ fillScale(d.count)+";font-size:" + sizeScale(d.count); })
       .text(function(d) { return d.key;})
       ;
+
+    //clouds.transition().duration(1000).attr("x",-1000); //.each("end",function() { d3.select(this).attr("x",1000).transition().attr("x", -1000);});
 
   },
 

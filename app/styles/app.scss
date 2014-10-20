@@ -104,11 +104,24 @@ html, body {
     left: -500vh;
 }
 
+@include keyframes(slidex) {
+  0 {
+    X: 1000;
+  }
+  50% {
+   	X: -1000;
+  }
+  100% {
+    X:1000;
+  }
+}
+
+
 .clouds {
 	.cloud {
 		opacity:.9;
-
-		@include transition (transform 500ms);
+		@include animation(slidex 2.0s);
+		@include animation-iteration-count(infinate);
 
 	}
 }
