@@ -105,14 +105,11 @@ html, body {
 }
 
 @include keyframes(slidex) {
-  0 {
-    X: 1000;
+  from {
+    @include transform(scale(0));
   }
-  50% {
-   	X: -1000;
-  }
-  100% {
-    X:1000;
+  to {
+    @include transform(scale(1));
   }
 }
 
@@ -120,8 +117,6 @@ html, body {
 .clouds {
 	.cloud {
 		opacity:.9;
-		@include animation(slidex 2.0s);
-		@include animation-iteration-count(infinate);
-
+		//@include animation(slidex 2.0s);
 	}
 }
