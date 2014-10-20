@@ -151,7 +151,7 @@ var MountainGraph = Ember.Component.extend({
 
     var width = get(this,'w');
     var rng = countRange(wordCounts);
-    var sizeScale = d3.scale.linear().domain(rng).rangeRound([7, 100]);
+    var sizeScale = d3.scale.linear().domain(rng).range([0.5, 4.0]);
     var y = d3.scale.linear().domain(rng).rangeRound([10, 100]);
     var colorRange = ["#f7fbff","#deebf7","#c6dbef","#9ecae1","#6baed6","#4292c6","#2171b5","#08519c","#08306b"].reverse();
 
@@ -167,7 +167,7 @@ var MountainGraph = Ember.Component.extend({
       .attr("class", "cloud")
       .attr("y", function(d){return y(d.count) + Math.floor(Math.random() * 101);})
       .attr("x", function(){return Math.floor(Math.random() * (width +1) );})
-      .attr("style", function(d) { return "fill:"+ fillScale(d.count)+";font-size:" + sizeScale(d.count); })
+      .attr("style", function(d) { return "fill:"+ fillScale(d.count)+";font-size:" + sizeScale(d.count) + "rem"; })
       .text(function(d) { return d.key;})
       ;
 
