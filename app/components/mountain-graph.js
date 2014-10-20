@@ -49,6 +49,28 @@ var parseDate = function(dateString) {
 
 };
 
+
+var countRange =  function(counts) {
+
+    var range = counts.reduce(function(rng, value){
+        var ct = get(value, "count");
+
+        if(ct > rng[1]) {
+          rng[1] = ct;
+        }
+
+        if(ct < rng[0]) {
+          rng[0] = ct;
+        }
+
+        return rng;
+      }, [99, 0]); //max is # greater job count
+    
+    return range;
+
+  };
+
+
 var colors = d3.scale.category10();
 
 
@@ -81,13 +103,9 @@ var MountainGraph = Ember.Component.extend({
     return "translate(0,"+ get(this,'h') +")";
   }.property('h'), 
 
-  draw: function(){
-
-    var comp = this;
-
-    //var formatPercent = d3.format(".0%");
+  drawMountains: function(){
     var width = get(this,'w');
-    //var height = get(this,'h');
+    var height = get(this, 'h');
     var data = get(this,'data').toArray();
 
     var svg = d3.select('#'+get(this,'elementId'));
@@ -99,31 +117,18 @@ var MountainGraph = Ember.Component.extend({
       .rangeRound([0, width]);
 
 
-
     var pts = function(d) {
 
       var x1 = x(parseDate(get(d, "startDate")));
       var x2 = x(parseDate(get(d, "endDate")));
       var x3 = 2*x2 - x1;
 
-      var y2 = comp.get("h");
+      var y2 = height;
       var y1 = y2 - (x2-x1);
 
       return "" + x1+","+y2+" "+x2+","+y1+" "+x3+","+y2;
 
     };
-
-/*    
-    svg.select(".jobs").selectAll(".job")
-      .data(data)
-        .enter().append("polygon")
-        .attr("class", "job")
-        .attr("points", function(d) { return pts(d); })
-        .attr("style" function(d) {return "opacity:.75; fill:" + colors(d);})
-        .append("desc")
-        .text(function(d) {return companyLabel(d); })
-
-        ;*/
 
     svg.select(".jobs").selectAll(".job")
       .data(data)
@@ -137,8 +142,36 @@ var MountainGraph = Ember.Component.extend({
         ;
   },
 
+  drawClouds : function () {
+    var wordCounts = get(this, 'wordCounts');
+
+    if(! wordCounts) {
+      return;
+    }
+
+    var rng = countRange(wordCounts);
+    var sizeScale = d3.scale.linear().domain(rng).rangeRound([7, 100]);
+
+    var colorRange = ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d","#023858"].reverse();
+
+    var z = d3.scale.ordinal().domain(rng).range(colorRange);
+    var svg = d3.select('#'+get(this,'elementId'));
+
+    svg.select(".clouds").selectAll(".cloud")
+      .data(wordCounts)
+      .enter().append("text")
+      .attr("class", "cloud")
+      .attr("y", 50)
+      .attr("x", 0)
+      .attr("style", function(d) { return "fill:"+ z(d.count)+";font-size:" + sizeScale(d.count); })
+      .text(function(d) { return d.key;})
+      ;
+
+  },
+
   didInsertElement: function(){
-    this.draw();
+    this.drawMountains();
+    this.drawClouds();
   }
 });
 

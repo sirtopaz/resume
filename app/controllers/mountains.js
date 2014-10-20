@@ -18,15 +18,16 @@ var MountainsController = Ember.ArrayController.extend({
 		var arr = get(this, 'content').toArray();
 
 		var counts = arr
-				.reduce(function(terms, job) { return terms.concat(job.technologies.split(", ")); }, [])
+				.reduce(function(terms, job) { return terms.concat(get(job, "technologies").split(", ")); }, [])
 				.reduce(function(map,term) { map[term] = (map[term] || 0) + 1; return map; }, {});
-
 
 		var countArray = Object.keys(counts).map(function(currentValue){ return {"key": currentValue, "count": counts[currentValue]};   });
 
 		return countArray;
 
 	}.property("@each")
+
+
 
 });
 
