@@ -2,17 +2,17 @@
 	<h2 class="title hideFromView">Skills</h2>
 	<h3>Technologies</h3>
 	<div class="skillList">
-	{{#each technologies}} <span class="skill">{{this.name}}</span>{{/each}}
+	{{#each technologies}}{{skill-label this}}{{/each}}
 	</div>
 
 	<h3>Tools</h3>
 	<div class="skillList">
-	{{#each tools}} <span class="skill">{{this.name}}</span>{{/each}}
+	{{#each tools}}{{skill-label this}}{{/each}}
 	</div>
 
 	<h3>Techniques</h3>
 	<div class="skillList">
-	{{#each techniques}} <span class="skill">{{this.name}}</span>{{/each}}
+	{{#each techniques}}{{skill-label this}}{{/each}}
 	</div>
 
 </section>
