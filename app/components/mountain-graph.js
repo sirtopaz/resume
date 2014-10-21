@@ -160,9 +160,9 @@ var MountainGraph = Ember.Component.extend({
     var fillScale = d3.scale.ordinal().domain(rng).range(colorRange);
     var svg = d3.select('#'+get(this,'elementId'));
 
-    var clouds = svg.select(".clouds").selectAll(".cloud");
+    var clouds = svg.select(".clouds").selectAll(".cloud").data(wordCounts);
 
-    clouds.data(wordCounts)
+    clouds
       .enter().append("text")
       .attr("class", "cloud")
       .attr("y", function(d){return y(d.count) + Math.floor(Math.random() * 101);})
@@ -171,8 +171,7 @@ var MountainGraph = Ember.Component.extend({
       .text(function(d) { return d.key;})
       ;
 
-    //clouds.transition().duration(1000).attr("x",-1000); //.each("end",function() { d3.select(this).attr("x",1000).transition().attr("x", -1000);});
-
+      clouds.attr("x",1000).transition().duration(6000).delay(function() {return Math.floor(Math.random() * 1001);}).ease("linear").attr("x", function(){return Math.floor(Math.random() * (width +1) );});
   },
 
   didInsertElement: function(){
