@@ -1,15 +1,15 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 var computed = Ember.computed;
 var alias    = computed.alias;
 var get      = Ember.get;
 
 
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
-var parseDate = function(dateString) {
-	var dt = dateString.split("-");
+var parseDate = function (dateString) {
+	var dt = dateString.split('-');
 
 	var yr = parseInt(dt[0], 10);
 	var mon = parseInt(dt[1], 10);
@@ -24,43 +24,43 @@ var parseDate = function(dateString) {
  */
 
 var JobController = Ember.Controller.extend({
-	init :function () {
+	init: function () {
 		this._super();
 		//debugger;
 	},
 
-	id : alias("model.id"),
-	startDate : alias("model.startDate"),
-	endDate: alias("model.endDate"),
-	title: alias("model.title"),
-	company: alias("model.company"),
-	technologies: alias("model.technologies"),
+	id: alias('model.id'),
+	startDate:  alias('model.startDate'),
+	endDate: alias('model.endDate'),
+	title: alias('model.title'),
+	company: alias('model.company'),
+	technologies: alias('model.technologies'),
 
 
 
-	startDateLabel : computed("startDate", function(){
-		var dt = get(this, "startDate");
+	startDateLabel : computed('startDate', function () {
+		var dt = get(this, 'startDate');
 
-		if(!dt) {
-			return "";
+		if (!dt) {
+			return '';
 		}
 
 		var stDate = parseDate(dt);
 
-		return months[stDate.getMonth()] + " " + stDate.getFullYear();
+		return months[stDate.getMonth()] + ' ' + stDate.getFullYear();
 
 	}),
 
-	endDateLabel : computed("endDate", function(){
-		var dt = get(this, "endDate");
+	endDateLabel : computed('endDate', function () {
+		var dt = get(this, 'endDate');
 
-		if(!dt) {
-			return "Present";
+		if (!dt) {
+			return 'Present';
 		}
 
 		var stDate = parseDate(dt);
 
-		return months[stDate.getMonth()] + " " + stDate.getFullYear();
+		return months[stDate.getMonth()] + ' ' + stDate.getFullYear();
 
 	})
 

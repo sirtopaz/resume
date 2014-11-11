@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 var set = Ember.set;
 var get = Ember.get;
@@ -11,12 +11,12 @@ var JobsController = Ember.ArrayController.extend({
 	},
 
 	actions: {
-		showSection : function(section) {
-			set(this, "section", section);
+		showSection : function (section) {
+			set(this, 'section', section);
 
-			if("job" === section) {
+			if ('job' === section) {
 
-				this.transitionToRoute('jobs.job', get(this, "arrangedContent.firstObject.id"));
+				this.transitionToRoute('jobs.job', get(this, 'arrangedContent.firstObject.id'));
 				return;
 			}
 
@@ -29,21 +29,21 @@ var JobsController = Ember.ArrayController.extend({
 	sortAscending: false,
 	showMenu: false,
 
-	section : "summary",
+	section : 'summary',
 
-	showSummary: function() {
-		return get(this, "section") === "summary";
-	}.property("section"),
+	showSummary: function () {
+		return get(this, 'section') === 'summary';
+	}.property('section'),
 
-	showExperience: function() {
-		return get(this, "section") === "job";
-	}.property("section"),
-	showSkills: function() {
-		return get(this, "section") === "skills";
-	}.property("section"),
-	showEducation: function() {
-		return get(this, "section") === "education";
-	}.property("section")
+	showExperience: function () {
+		return get(this, 'section') === 'job';
+	}.property('section'),
+	showSkills: function () {
+		return get(this, 'section') === 'skills';
+	}.property('section'),
+	showEducation: function () {
+		return get(this, 'section') === 'education';
+	}.property('section')
 
 });
 

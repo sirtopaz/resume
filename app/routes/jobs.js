@@ -1,7 +1,7 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 var JobsRoute = Ember.Route.extend({
-	model: function() {
+	model: function () {
 		return this.store.find('job');
 	}
 

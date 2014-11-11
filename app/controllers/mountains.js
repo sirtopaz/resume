@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 
 //var set = Ember.set;
 var get = Ember.get;
@@ -10,22 +10,22 @@ var MountainsController = Ember.ArrayController.extend({
 		//debugger;
 	},
 
-	itemController:"jobitem",
+	itemController:'jobitem',
 	sortProperties: ['startDate'],
 	sortAscending: false,
 
-	technologyCounts: function() {
+	technologyCounts: function () {
 		var arr = get(this, 'content').toArray();
 
 		var counts = arr
-				.reduce(function(terms, job) { return terms.concat(get(job, "technologies").split(", ")); }, [])
-				.reduce(function(map,term) { map[term] = (map[term] || 0) + 1; return map; }, {});
+				.reduce(function (terms, job) { return terms.concat(get(job, 'technologies').split(', ')); }, [])
+				.reduce(function (map,term) { map[term] = (map[term] || 0) + 1; return map; }, {});
 
-		var countArray = Object.keys(counts).map(function(currentValue){ return {"key": currentValue, "count": counts[currentValue]};   });
+		var countArray = Object.keys(counts).map(function (currentValue){ return {'key': currentValue, 'count': counts[currentValue]};   });
 
 		return countArray;
 
-	}.property("@each")
+	}.property('@each')
 
 
 
