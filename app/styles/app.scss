@@ -34,13 +34,14 @@ html, body {
 
 	>.ember-view {
 		margin: 0 auto;
-		height: 100%;
 		padding: 0 .5rem;
+
 	}
 
 	h1, h2, h3, h4, h5 {
 		font-family: $header-font-family;
 		color: $header-font-color;
+		
 	}
 
 	hr {
@@ -50,42 +51,101 @@ html, body {
 		width: 100%;
 
 	}
+
+
+	.pageHeader {
+		@include size(auto 10vh);
+
+		h1 {
+			font-size: 6.5vh;
+			margin:0;
+		}
+
+	}
+
+	.pageMain {
+		@include size(auto 80vh);
+		overflow: auto;
+
+	}
+
+	.pageFooter {
+		@include size(auto 10vh);
+
+	}
 }
 
 .resume {
 	position: relative;
 
+	>.areaNav {
+		@include size(auto 3vh);
+		background: $body-font-color;
+
+		.navItem {
+			padding: 0 .5rem;
+			@include size(auto 3vh);
+			line-height: 1;
+			vertical-align: middle;
+
+			display: table-cell;
+			font-size: 1.7vh;
+			font-weight: bold;
+			color: white;
+		}
+
+	}
+
 	>.area {
-		//background: rgba(255,0,0,.5);
-	}
+		@include size(auto 77vh);
 
-	.content {
-		@include transition (transform 500ms);
+		nav.content {
+			float: left;
 
-		&.hide {
-			//display:none;
-			@include transform(translateX(-100vw));
-		}
-		&.show {
-			//display:block;
-			@include transform(translateX(0));
-		}		
-	}
-}
+			@include size(30% 100%);
 
-.skillList {
-	.skill {
-		&:after {
-		  content: ', ';
+			@include transition(transform 500ms);
+
+			&.hide {
+				//display:none;
+				@include transform(translateX(-100vw));
+			}
+			&.show {
+				//display:block;
+				@include transform(translateX(0));
+			}		
 		}
 
-		//ember adds lots of extra tags... so cannot use last-child
-		&:last-of-type {
-			&:after {
-				content: '';
+		.detail {
+			float: left;
+			@include size(70% 100%);
+			overflow: auto;
+		}
+
+		.skillList {
+			padding: 0 1rem;
+
+			.skill {
+				&:after {
+				  content: ', ';
+				}
+
+				//ember adds lots of extra tags... so cannot use last-child
+				&:last-of-type {
+					&:after {
+						content: '';
+					}
+				}
 			}
 		}
+
+		&.summary {
+			padding: 0 1rem;
+		}
+
 	}
+
+
 }
 
 .inlineLabel {

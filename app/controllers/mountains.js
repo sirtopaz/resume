@@ -10,7 +10,6 @@ var MountainsController = Ember.ArrayController.extend({
 		//debugger;
 	},
 
-	itemController:'jobitem',
 	sortProperties: ['startDate'],
 	sortAscending: false,
 

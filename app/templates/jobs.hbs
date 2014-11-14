@@ -1,4 +1,4 @@
-<section class="resume">
+<section class="resume pageMain">
 	<nav class="areaNav">
 		<span {{bind-attr class=":navItem showSummary:selected"}}class="section" {{action 'showSection' 'summary'}}>Summary</span>
 		<span {{bind-attr class=":navItem showEducation:selected"}} {{action 'showSection' 'job'}}>Experience</span>
@@ -9,7 +9,7 @@
 	{{outlet}}
 </section>
 
-<footer class="pagefoot">
+<footer class="pagefooter">
 	<hr>
 	<nav>Go to {{#link-to 'index'}}Home{{/link-to}}</nav>
 </footer>

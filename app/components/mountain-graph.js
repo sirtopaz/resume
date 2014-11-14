@@ -77,10 +77,10 @@ var colors = d3.scale.category10();
 var MountainGraph = Ember.Component.extend({
   tagName: 'svg',
   attributeBindings: ['viewBox'],
-  margin: {top: 20, right: 60, bottom: 0, left: 20},
+  margin: {top: 20, right: 60, bottom: 0, left: 0},
 
-  width: '100%',
-  vbWidth: '800',
+  height: '100%',
+  vbWidth: '1000',
   vbHeight: '400',
 
   viewBox:  function () {
@@ -171,7 +171,7 @@ var MountainGraph = Ember.Component.extend({
       .text(function (d) { return d.key;})
       ;
 
-      clouds.attr('x',1000).transition().duration(6000).delay(function () {return Math.floor(Math.random() * 1001);}).ease('linear').attr('x',  function () {return Math.floor(Math.random() * (width +1) );});
+      clouds.attr('x',1500).transition().duration(6000).delay(function () {return Math.floor(Math.random() * 1001);}).ease('linear').attr('x',  function () {return Math.floor(Math.random() * (width +1) );});
   },
 
   didInsertElement: function () {
