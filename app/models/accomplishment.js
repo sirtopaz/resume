@@ -141,6 +141,11 @@ Accomplishment.reopenClass({
 			'id':26,
 			'job':9,
 			'description':'Lead a team of engineers to create innovative education software in collaboration with data scientists focusing on bringing data visualizing and predictive analytic tools to instructors, students, and administrators'
+		},
+		{
+			'id':27,
+			'job':10,
+			'description':'TBD'
 		}
 	]
 });

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
 
 @import "bower_components/modularized-normalize-scss/normalize";
 @import "bower_components/bourbon/dist/bourbon";
@@ -10,7 +10,7 @@ $body-font-family: $helvetica;
 $header-font-family: 'Oswald', $helvetica;
 $header-font-color: navy;
 
-
+//GENERAL SHARED STYLES
 
 * {
 	@include box-sizing(border-box);
@@ -29,6 +29,23 @@ html, body {
 	font-family: $body-font-family;
 }
 
+.inlineLabel {
+	font-size: 1em;
+	font-family: $header-font-family;
+	font-weight: 700;
+}
+
+.centered {
+	text-align: center;
+}
+
+.hideFromView {
+    position: absolute;
+    top: -500vh;
+    left: -500vh;
+}
+
+//APPLICATION STLYES
 
 .ember-application {
 
@@ -41,6 +58,7 @@ html, body {
 	h1, h2, h3, h4, h5 {
 		font-family: $header-font-family;
 		color: $header-font-color;
+		margin: 0 0 1em;
 		
 	}
 
@@ -50,6 +68,10 @@ html, body {
 		border-width: 2px 0;
 		width: 100%;
 
+	}
+
+	p {
+		margin: 0 0 1em;
 	}
 
 
@@ -74,6 +96,8 @@ html, body {
 
 	}
 }
+
+//PAGE STYLES
 
 .resume {
 	position: relative;
@@ -147,23 +171,6 @@ html, body {
 
 
 }
-
-.inlineLabel {
-	font-size: 1em;
-	font-family: $header-font-family;
-	font-weight: 700;
-}
-
-.centered {
-	text-align: center;
-}
-
-.hideFromView {
-    position: absolute;
-    top: -500vh;
-    left: -500vh;
-}
-
 
 .clouds {
 	.cloud {

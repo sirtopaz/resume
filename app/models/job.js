@@ -99,7 +99,6 @@ Job.reopenClass({
 			'location':'Boston MA'
 		},
 
-
 		{
 			'id':8,
 			'company':'Core Security',
@@ -112,39 +111,30 @@ Job.reopenClass({
 			'location':'Boston MA'
 		},
 
-
-
 		{
 			'id':9,
 			'company':'McGraw-Hill Education',
 			'title':'Director of Engineering, Analytics',
 			'startDate':'2013-08-01',
-			'endDate':null,
+			'endDate':'2014-11-30',
 			'technologies':'HTML5, CSS3, SVG, JavaScript, JSON, SASS, JQuery, EmberJS, D3js, Foundation, Bower, NodeJS, Sublime Text, Photoshop, Illustrator, Dreamweaver, InDesign, Confluence, Jira, Github',
 			'accomplishments':[25,26],
 			'brief':null,
 			'location':'Boston MA'
+		},
+
+		{
+			'id':10,
+			'company':'HubSpot Inc.',
+			'title':'Staff Engineer',
+			'startDate':'2014-12-01',
+			'endDate':null,
+			'technologies':'TBD',
+			'accomplishments':[27],
+			'brief':null,
+			'location':'Cambridge MA'
 		}
 	]
 });
 
 export default Job;
-
-/*
-
-job format
-
-		{
-			'id':1,
-			'company':'KPMG Consulting Inc',
-			'title':'Senior Consultant',
-			'startDate':'1996-03-15',
-			'endDate':'2000-04-30',
-			'technologies':'HTML, CSS, JavaScript, Java, Servlets, JSP, XML, XSLT, UML, SQL, Dreamweaver, Photoshop, Rational Rose, Tomcat',
-			'accomplishments':[1,2],
-			'brief':null,
-			'location':'Boston MA'
-		}
-
-
-*/
